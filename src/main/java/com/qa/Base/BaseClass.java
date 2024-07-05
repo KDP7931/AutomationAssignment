@@ -2,6 +2,7 @@ package com.qa.Base;
 
 
 import java.io.IOException;
+
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,8 +25,6 @@ public class BaseClass implements AutoConstant {
 
 		pf = new PropertyFileData();
 		String url = pf.GetPropertyString("url");
-		final boolean BaseFlag = pf.GetPropertyboolean("BaseFlag");
-		System.out.println("DriverBaseFlag " + BaseFlag);
 		WebDriverManager.chromedriver().setup();
 
 		String chrome_key = pf.GetPropertyString("ChromeDriverKey");

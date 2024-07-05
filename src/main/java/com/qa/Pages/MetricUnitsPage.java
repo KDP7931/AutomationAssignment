@@ -1,12 +1,13 @@
 package com.qa.Pages;
 
-import org.openqa.selenium.By;
+
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.Base.AutoConstant;
@@ -37,13 +38,13 @@ public class MetricUnitsPage implements AutoConstant  {
 
 	@FindBy(how = How.XPATH, using = "//select[@id='cactivity']")
 	private  WebElement Dropdown;
-	
+
 	@FindBy(how = How.XPATH, using = "//input[@value='Clear']")
 	private  WebElement Reset;
 
 	@FindBy(how = How.XPATH, using = "//h2[normalize-space()='Result']")
 	private  WebElement Result;
-	
+
 	@FindBy(how = How.XPATH, using = "//div//font")
 	private  WebElement errormessage;
 
@@ -54,11 +55,11 @@ public class MetricUnitsPage implements AutoConstant  {
 	public WebElement Age() {
 		return age;
 	}
-	
+
 	public WebElement Reset() {
 		return Reset;
 	}
-	
+
 	public WebElement femaleradio() {
 		return femaleradio;
 	}
@@ -83,6 +84,19 @@ public class MetricUnitsPage implements AutoConstant  {
 		return Result;
 	}
 
+	public void setMetrics(String age, String height, String weight) {
+		WebDriverWait wait=new WebDriverWait(driver,ExplicitWaitTime);
+		wait.until(ExpectedConditions.visibilityOf(Age()));
+		Age().clear();
+		Age().sendKeys(age);
+		wait.until(ExpectedConditions.visibilityOf(height()));
+		height().clear();
+		height().sendKeys(height);
+		wait.until(ExpectedConditions.visibilityOf(weight()));
+		weight().clear();
+		weight().sendKeys(weight);
 
+
+	}
 
 }
